@@ -32,21 +32,6 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'build','index.html'))
-})
-app.get('/Shop', (req, res) => {
-    res.sendFile(path.join(__dirname,'build','index.html'))
-})
-app.get('/Login', (req, res) => {
-    res.sendFile(path.join(__dirname,'build','index.html'))
-})
-app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname,'build','index.html'))
-})
-app.get('/Admin', (req, res) => {
-    res.sendFile(path.join(__dirname,'build','index.html'))
-})
 
 // login user
 app.post('/login', async (req, res) => {
@@ -168,7 +153,7 @@ app.get('/getCoinPrise', (req, res) => {
     console.log('user');
     adminModel.findOne({}).then((item) => {
         console.log(item);
-        res.json({ cr: item.coinRate - 1 });
+        res.json({ cr: item.coinRate });
     })
 })
 app.get('/AdminData', async (req, res) => {
